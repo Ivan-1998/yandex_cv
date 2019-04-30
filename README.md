@@ -29,3 +29,90 @@ open -a Google\ Chrome --args --disable-web-security --user-data-dir
 Для получения данных аэропорта используется внешнее API [FlightStats](https://developer.flightstats.com/). API имеет ряд ограничений:
 * Количество запросов в месяц - 1000
 * Полученный список прибытий/отправлений формируется в диапазоне ближайших 6 часов от указанного часа.
+
+
+# Ticker
+Почему this.i не увеличивается, как исправить?
+```js
+function Ticker() {
+    this._i = 0;
+};
+
+Ticker.prototype = {
+    tick: function() {
+        console.log(this._i++);     
+    }
+};
+
+var ticker = new Ticker();
+setInterval(ticker.tick, 1000);
+```
+
+### Способ 1
+Передать функцию tick в качестве функции, а не строки в методе setInterval()
+```js
+function Ticker() {
+    this._i = 0;
+};
+
+Ticker.prototype = {
+    tick: function() {
+        console.log(this._i++);     
+    }
+};
+
+var ticker = new Ticker();
+setInterval(function() {
+    ticker.tick();
+}, 1000);
+```
+
+### Способ 2
+Через bind() привяжем метод tick к контексту объекта Ticker
+```js
+function Ticker() {
+    this._i = 0;
+};
+
+Ticker.prototype = {
+    tick: function() {
+        console.log(this._i++);     
+    }
+};
+
+var ticker = new Ticker();
+setInterval(ticker.tick.bind(ticker), 1000);
+```
+
+### Cпособ 3
+Вызвать метод setInterval() внутри метода объекта Ticker(), после чего просто обратиться к методу tick();
+```js
+function Ticker() {
+    this._i = 0;
+};
+
+Ticker.prototype = {
+    tick: function() {
+        setInterval(() => {
+            console.log(this._i++);
+        }, 1000)     
+    }
+};
+
+var ticker = new Ticker();
+ticker.tick();
+```
+
+### Способ 4
+Объвить метод tick() в функции конструктор Ticker()
+```js
+function Ticker() {
+    this._i = 0;
+    this.tick = () => {
+        console.log(this._i++);
+    }
+};
+var ticker = new Ticker();
+
+setInterval(ticker.tick, 1000);
+```
