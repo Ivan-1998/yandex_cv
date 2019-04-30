@@ -104,7 +104,7 @@ ticker.tick();
 ```
 
 ### Способ 4
-Объвить метод tick() в функции конструктор Ticker()
+Объявить метод tick() в функции конструктор Ticker()
 ```js
 function Ticker() {
     this._i = 0;
