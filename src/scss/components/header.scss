@@ -1,0 +1,39 @@
+.header {
+    &__content {
+        // outline: $outline;
+        width: 100%;
+        padding: 15px 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__logo {
+        display: flex;
+        align-items: center;
+        width: 188px;
+        a {
+            &:last-child {
+                margin: 0 0 1px 5px;
+            }
+        }
+    }
+    &__user {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        &-photo {
+            width: 42px; height: 42px;
+            border-radius: 50%;
+            background-image: url('/src/images/user-default.png');
+            background-size: cover;
+            background-position: center;
+            margin-right: 7px;
+        }
+        &-text {
+            font-size: 15px;
+            span {
+                color: $txt-red;
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+.main__result {
+    // outline: $outline;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    &-table {
+        // outline: $outline;
+        width: 70%;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 15px;
+            thead {
+                font-weight: 600;
+                border-bottom: 1px solid $gray;
+            }
+            tr {
+                width: 100%;
+            }
+            td {
+                padding: 10px;
+                &.is_departure {
+                    color: $txt-green;
+                }
+                &.not_departure {
+                    color: $txt-red;;
+                }
+            }
+        } 
+    }
+}
+
+@media (max-width: $desktopB) {
+    .main__result {
+        &-table {
+            width: 65%;
+            table {
+                font-size: 15px;
+                td {
+                    padding: 10px;
+                }
+            } 
+        }
+    }    
+}
+
+@media (max-width: $desktopS) {
+    .main__result {
+        flex-wrap: wrap;
+        &-table {
+            width: 100%;
+            margin: 0 auto;
+            table {
+                font-size: 15px;
+                td {
+                    padding: 10px;
+                }
+            } 
+        }
+    } 
+}

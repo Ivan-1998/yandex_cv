@@ -1,0 +1,179 @@
+.navbar {
+    // outline: $outline;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &__left {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        height: 110px;
+        flex-direction: column;
+        &-switcher {
+            border: 1px solid $gray;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            width: 170px;
+            justify-content: space-between;
+            overflow: hidden;
+            .radio {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                label {
+                    cursor: pointer;
+                    width: 100%;
+                    padding: 6px 14px;
+                    transition: 0.2s;
+                    &.select {
+                        background: #ffeba0;
+                    }
+                }
+                span {
+                    display: block;
+                    text-align: center;
+                    font-size: 15px;
+                    line-height: 20px;
+                }
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    height: 0; width: 0;
+                }
+                &:not(:last-child) {
+                    border-right: 1px solid $gray;
+                }
+            }
+        }
+        &-days {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            font-size: 15px;
+            span {
+                cursor: pointer;
+                &.select {color: $txt-red;}
+                &:not(:last-child) {
+                    margin-right: 10px;
+                }
+            }
+        }
+        &-checkbox {
+            .container {
+                display: block;
+                position: relative;
+                padding-left: 28px;
+                cursor: pointer;
+                font-size: 15px;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                input {
+                    position: absolute;
+                    opacity: 0;
+                    cursor: pointer;
+                    height: 0;
+                    width: 0;
+                    &:checked ~ .checkmark:after {
+                        display: block;
+                    }
+                    &:checked ~.checkmark {
+                        background-color: #ffeba0;
+                    }
+                }
+                .checkmark {
+                    position: absolute;
+                    top: -2px;
+                    left: 0;
+                    height: 20px;
+                    width: 20px;
+                    background-color: #fff;
+                    border: 1px solid $gray;
+                    border-radius: 4px;
+                    &:after {
+                        content: "";
+                        position: absolute;
+                        display: none;
+                        left: 6px;
+                        top: 2px;
+                        width: 5px;
+                        height: 10px;
+                        border: solid #000;
+                        border-width: 0 3px 3px 0;
+                        -webkit-transform: rotate(45deg);
+                        -ms-transform: rotate(45deg);
+                        transform: rotate(45deg);
+                    }
+                }
+            }
+        }
+    }
+
+    // right part
+    &__right {
+        // outline: $outline;
+        width: 25%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        &-search {
+            width: 100%;
+            input[type="number"] {
+                border: 1px solid $gray;
+                height: 36px;
+                font-size: 14px;
+                padding-left: 15px;
+                width: 100%;
+                display: block;
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+            }
+        }
+
+    }
+}
+
+@media (max-width: $desktopB) {
+    .navbar {
+        &__left {
+            &-days {
+                display: flex;
+                font-size: 15px;
+            }
+        }
+        // right part
+        &__right {
+            width: 30%;
+            display: flex;
+        }
+    }    
+}
+
+@media (max-width: $desktopS) {
+    .navbar {
+        flex-wrap: wrap;
+        &__left {
+            width: 100%;
+            padding-bottom: 20px;
+            &-days {
+                display: flex;
+                font-size: 17px;
+            }
+            &-checkbox {
+                .container {
+                    font-size: 17px;
+                }
+            }
+        }
+        // right part
+        &__right {
+            width: 40%;
+            display: flex;
+        }
+    }
+}

@@ -1,0 +1,85 @@
+.main__result-info {
+    // outline: $outline;
+    width: 25%;
+    margin-top: 20px;
+    &-content {
+        height: 120px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &-location {
+        .location {
+            &__name {
+                font-size: 28px;
+                color: $txt-purple;
+                display: flex;
+                align-items: center;
+                &:before {
+                    content: '';
+                    display: block;
+                    width: 15px; height: 15px;
+                    background-image: url('/src/images/map.svg');
+                    background-size: cover;
+                    background-position: center;
+                    margin-right: 4px;
+                }
+            }
+            &__date {
+                font-size: 14px;
+            }
+        }
+    }
+    &-tickets {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        .tickets {
+            &__text {
+                margin-left: 5px;
+                p {
+                    font-size: 20px;
+                    line-height: 13px;
+                    color: $txt-black;
+                    span {
+                        font-size: 12px;
+                        color: $gray;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+@media (max-width: $desktopB) {
+    .main__result-info {
+        width: 30%;
+        margin-top: 20px;
+        &-content {
+            height: 110px;
+        }
+        &-location {
+            .location {
+                &__name {
+                    font-size: 28px;
+                }
+                &__date {
+                    font-size: 14px;
+                }
+            }
+        }
+    }    
+}
+@media (max-width: $desktopS) {
+    .main__result-info {
+        width: 100%;
+        margin: 30px 0 0 0;
+        &-content {
+            height: 110px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }    
+}
